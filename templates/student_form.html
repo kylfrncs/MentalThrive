@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <title>MentalThrive | Student</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+    <!-- Favicons -->
+    <link href="{{url_for('static', filename='avologo.png')}}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+</head>
+
+<body>
+    <div id="loader"></div>
+
+
+    <div class="bg-image">
+        <section class="h-100 h-custom" style="background-image: linear-gradient(rgb(144, 179, 89),rgb(144, 179, 89));">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-lg-8 col-xxl-6">
+                        <div class="card rounded-3 shadow-lg p-3 mb-5 bg-body rounded border border-2"
+                            style="background-image: linear-gradient(rgb(226, 236, 139),rgb(226, 236, 139));">
+                            <div class="text-center">
+                                <img src="{{url_for('static', filename='avo.png')}}" class="w-50 rounded" alt="">
+                            </div>
+                            <form action="{{ url_for('goto_success_student') }}" method="POST" required="true">
+                                
+                                <div class="card-body p-4 p-md-3">
+
+                                    <!-- Card -->
+                                    <div class="">
+                                        <h3 class="pb-2 text-center fw-bold">Self-Assessment</h3>
+                                        <h4 class="text-center">(DASS-21)</h4>
+                                        <h5 class="text-center">Depression, Anxiety, Stress Scale</h5>
+                                        <h5 class="pb-2 text-center">21-Items</h5>
+                                        <div class="col-lg-10 d-grid mx-sm-auto shadow border border-success rounded">
+                                            <h6 class="p-2 text-start">Please read each statement and circle a number 0,
+                                                1, 2 or 3 which indicates how much the statement
+                                                applied to you over the past week. There are no right or wrong answers.
+                                                Do not spend too much time
+                                                on any statement.</h6>
+                                            <h6 class="p-2 text-start">The rating scale is as follows:<br>
+                                                <strong>0</strong> Did not apply to me at all<br>
+                                                <strong>1</strong> Applied to me to some degree, or some of the time<br>
+                                                <strong>2</strong> Applied to me to a considerable degree, or a good
+                                                part of time<br>
+                                                <strong>3</strong> Applied to me very much, or most of the time
+                                            </h6>
+                                        </div>
+
+                                        <!--Question 1-->
+                                        <div class="py-3"></div>
+
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Mahirap para sa akin magpakalma (upang mag-relax matapos ang pagkakaroon ng stress o kakaibang damdamin).">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>1.)</b><strong>
+                                                        I found it hard to wind
+                                                        down (to relax after stress of
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;excitement)</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer1" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer1" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer1" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer1" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 2-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Alam ko ang tuyong nararamdaman sa aking bibig.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>2.)</b><strong> I was
+                                                        aware of dryness of my mouth</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer2" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer2" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer2" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer2" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 3-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Parang hindi ko ma-experience ang anumang positibong damdamin.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>3.)</b><strong>
+                                                        I couldn't seem to experience any positive feeling
+                                                        at
+                                                        all</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer3" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer3" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer3" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer3" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 4-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Naranasan ko ang kahirapan sa paghinga (halimbawa, sobrang bilis ng paghinga, kahit walang pisikal na pagsusumikap).">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>4.)</b><strong>
+                                                        I experienced breathing difficulty (eg,
+                                                        excessively rapid
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;breathing,
+                                                        breathlessness in the absence of physical exertion)</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer4" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer4" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer4" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer4" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 5-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Nahihirapan akong mabuo ang lakas-loob na gawin ang mga bagay.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>5.)</b><strong>
+                                                        I found it difficult to work up the initiative to
+                                                        do
+                                                        things</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer5" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer5" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer5" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer5" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 6-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madalas akong nag-over-react sa mga sitwasyon.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>6.)</b><strong> I tended to over-react to situations</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer6" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer6" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer6" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer6" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 7-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Naranasan ko ang pamumulupot (tulad ng pagkakaroon ng pagtitindig o pagkakarandam ng kakaibang kaba, lalo na sa mga kamay).
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>7.)</b><strong> I experienced trembling (eg, in the
+                                                        hands)</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer7" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer7" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer7" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer7" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 8-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararamdaman ko na marami akong nerbiyos na enerhiya na nauubos.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>8.)</b><strong> I felt that I was using a lot of nervous
+                                                        energy</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer8" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer8" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer8" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer8" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 9-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nag-aalala ako sa mga sitwasyon kung saan maaaring ako mag-panic at magmukhang tanga.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>9.)</b><strong> I was worried about situations in which I
+                                                        might panic and
+                                                        make &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a fool of
+                                                        myself</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer9" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer9" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer9" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer9" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 10-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Parang wala akong inaasahang magandang mangyayari sa hinaharap.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>10.)</b><strong> I felt that I had nothing to look forward
+                                                        to</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer10" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer10" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer10" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer10" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 11-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Natagpuan ko ang sarili kong nagiging magulo.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>11.)</b><strong> I found myself getting agitated</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer11" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer11" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer11" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer11" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 12-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nahihirapan akong mag-relax.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>12.)</b><strong> I found it difficult to relax</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer12" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer12" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer12" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer12" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 13-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararamdaman ko ang lungkot at panghihinayang.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>13.)</b><strong> I felt down-hearted and blue</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer13" id="inlineRadio0" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer13" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer13" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer13" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 14-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Wala akong tiis para sa anumang nagpapigil sa akin na magpatuloy sa aking ginagawa.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>14.)</b><strong> I was intolerant of anything that kept me from
+                                                        getting on
+                                                        with &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;what I was
+                                                        doing</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer14" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer14" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer14" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer14" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 15-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararamdaman ko na malapit na akong mag-panic.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>15.)</b><strong> I felt I was close to panic</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer15" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer15" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer15" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer15" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 16-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Hindi ko magawang maging masigla sa kahit anong bagay.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>16.)</b><strong> I was unable to become enthusiastic about
+                                                        anything</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer16" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer16" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer16" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer16" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 17-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararamdaman ko na parang wala akong halaga bilang isang tao.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>17.)</b><strong> I felt I wasn't worth much as a person</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer17" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer17" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer17" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer17" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 18-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararamdaman ko na medyo mabilis akong magalit.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>18.)</b><strong> I felt that I was rather touchy</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer18" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer18" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer18" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer18" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 19-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Alam kong kumikilos ang aking puso kahit walang pisikal na pagsusumikap (halimbawa, pakiramdam ng pagtaas ng bilis ng puso, o pagkakarandam ng pag-iba ng tibok).
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>19.)</b><strong> I was aware of the action of my heart in the
+                                                        absence of
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;physical
+                                                        exertion (eg, sense of heart rate increase, heart
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;missing a
+                                                        beat)</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer19" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer19" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer19" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer19" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 20-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararamdaman ko ang takot nang walang rason.
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>20.)</b><strong> I felt scared without any good reason</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer20" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer20" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer20" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer20" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 21-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararamdaman ko na walang saysay ang buhay.
+
+                                            ">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>21.)</b><strong> I felt that life was meaningless</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        required name="Answer21" id="inlineRadio0" value="0" />
+                                                    <label class="form-check-label" for="inlineRadio0">0</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer21" id="inlineRadio1" value="1" />
+                                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer21" id="inlineRadio2" value="2" />
+                                                    <label class="form-check-label" for="inlineRadio2">2</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input border border-success" type="radio"
+                                                        name="Answer21" id="inlineRadio3" value="3" />
+                                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <div class="form-floating col-lg-10 d-grid gap-3 mx-0 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-placement="right" title="Kumusta ka {{Sfirst_name}}?">
+                                            <textarea class="form-control" placeholder="" id="floatingTextarea2"
+                                                style="height: 100px; background-color: rgb(226, 236, 139);"
+                                                name="fcomment"></textarea>
+                                            <label for="floatingTextarea2"><strong>How are you {{Sfirst_name}}?
+                                                    </strong></label>
+
+                                        </div>
+
+                                        <div class="py-3"></div>
+                                    </div>
+
+                                    <div class="py-3"></div>
+
+
+                                    <div class="col-sm-12 pt-4 text-center">
+                                        <input type="hidden" name="key" id="key" required>
+
+                                        <button class="btn btn-secondary btn-lg" type="submit">Submit</button>
+
+                                    </div>
+
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+
+    <!--<iframe style="  background-image: linear-gradient(rgb(144, 179, 89),rgb(144, 179, 89));
+    " width="0" height="0" src="https://www.youtube.com/embed/gQlMMD8auMs?si=XaSmCasgdZ5thUIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    <iframe width="0" height="0" src="https://www.youtube.com/embed/gQlMMD8auMs?si=XaSmCasgdZ5thUIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    -->
+    <script>
+        var loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
+    </script>
+
+
+    <script>
+        window.onbeforeunload = function () {
+            if (window.scrollTo) window.scrollTo(0, 0);
+        };
+        if (history && history.scrollRestoration) history.scrollRestoration = "manual";
+
+    </script>
+
+</body>
+
+</html>

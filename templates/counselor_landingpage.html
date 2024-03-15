@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MentalThrive</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{url_for('static', filename='avologo.png')}}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/aos/aos.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css')}}">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+  <!--Tooltip-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+
+<body>
+
+  <div id="loader"></div>
+
+  <div class="banner">
+    <!-- ======= Header ======= -->
+    <header id="header" class="head">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="{{url_for('goto_counselor_landingpage')}}" class="logo" style="max-width: 40%; max-height: 40%;"><img
+            src="{{ url_for('static', filename='avologo.png') }}" alt="" class="img-fluid;">MentalThrive</a>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="#home">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#team">Team</a></li>
+            <li><a class="nav-link scrollto" href="#admin">Admin</a>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            <li><a class="nav-link scrollto" href="{{url_for('goto_counselor_dash')}}">Dashboard</a></li>
+            <li><a class="bi bi-box-arrow-right fs-4" href="{{url_for('Mhome')}}" data-bs-toggle="tooltip"
+                data-bs-placement="right" title="Log out"></a></li>
+          </ul>
+
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div>
+
+    </header><!-- End Header -->
+
+    <!-- ======= home Section ======= -->
+    <section class="container-fluid" id="home" class="d-flex align-items-center position-relative">
+      <div class="row">
+        <div class="col position-relative fs-2 fw-bold" data-aos="fade-up" data-aos-delay="500" style="width: 50%; height: 100px; float: left; margin-top: 50px;
+      margin-left: 50px; margin-bottom: 300px; color: black; margin-top: 100px;">
+          <p class="fs-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Good Day Counselors!</p>
+          <p>"Mental health…is not a destination,
+            <br>&nbsp; but a process. It’s about how you
+            &nbsp;&nbsp;drive,not where you’re going."
+          </p>
+          <h2>-Noam Shpancer, PhD</h2>
+        </div>
+        <div class="col align-items-center" data-aos="fade-up" data-aos-delay="500" style="width: 50%; height: 100px; float: left; margin-top: 50px;
+      margin-left: 50px; margin-bottom: 300px; color: black; font-size: 35px; font-weight: bold;">
+          <image id="UILOGO" src="{{ url_for('static', filename='assets/img/UILOGO.png')}}"
+            style="width: 500px; height: 500px; ">
+        </div>
+      </div>
+    </section>
+
+
+    <!-- End home -->
+
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+            <img src="{{ url_for('static', filename='assets/img/gif.gif') }}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <h1>MentalThrive</h1>
+
+            <p style="font-size: 20px;">
+              Mental health is just as important as physical health. This resource encourages
+              students to take care of their mental health to create happier, healthier and
+              more productive teams. Let's break down the stigma of mental health in the
+              workplace so every student can get the mental health support at school that they need.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End About Section -->
+
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+        <div class="section-title">
+          <h1>Council of Leaders</h1>
+          <p>Bring you safe space</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/L.jpg') }}" alt="">
+              <h4>Frances Roxanne Sorolla</h4>
+              <span>University Guidance Associate</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/M.jpg' )}}" alt="">
+              <h4>Ma. Lourdes Bedia, RGC</h4>
+              <span>University Guidance Counselor</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/R.jpg') }}" alt="">
+              <h4>Lourlyn Supresencia Montero</h4>
+              <span>University Guidance Associate</span>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/phinma-logo (1).png') }}" alt="">
+              <h4>Ron Esther Banlasan - Suizo, RGC RPm</h4>
+              <span>University Guidance Counselor</span>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/phinma-logo (1).png') }}" alt="">
+              <h4>Ma. Theresa Mabaquiao</h4>
+              <span>University Associate(BED)</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Team Section -->
+
+    <!--Admin Section-->
+    <section id="admin" class="team">
+      <div class="container">
+        <div class="section-title">
+          <h1>Web App Admins</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/phinma-logo (1).png') }}" alt="">
+              <h4>Mary Grace Tabarnero</h4>
+              <span>BSIT</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/phinma-logo (1).png' )}}" alt="">
+              <h4>Jemima Mariano</h4>
+              <span>BSIT</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/phinma-logo (1).png') }}" alt="">
+              <h4>Kyle Francis Pama</h4>
+              <span>BSIT</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!--End Admin Section-->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2 style="font-weight: bold;">Contact</h2>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>School Address</h3>
+              <p>Rizal St, Iloilo City Proper, Iloilo City, 5000 Iloilo</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>info.coc@phinmaed.com</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>tel:+0888803317</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <iframe class="mb-4 mb-lg-0" iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.550913468192!2d122.56701887410357!3d10.691923960748593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aee5255345f11b%3A0xb32057bb6b1d39c8!2sPHINMA%20UNIVERSITY%20OF%20ILOILO!5e0!3m2!1sen!2sph!4v1695367445755!5m2!1sen!2sph"
+            frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+        </div>
+
+      </div>
+
+    </section><!-- End Contact Section -->
+
+    <main id="main">
+
+    </main>
+    <!-- End #main -->
+
+  </div>
+
+<!--ToolTip-->
+  <script>
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  </script>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+  <script>
+    var loader = document.getElementById("loader");
+    window.addEventListener("load", function () {
+      loader.style.display = "none";
+    })
+  </script>
+
+
+  <script>
+    window.onbeforeunload = function () {
+      if (window.scrollTo) window.scrollTo(0, 0);
+    };
+    if (history && history.scrollRestoration) history.scrollRestoration = "manual";
+
+  </script>
+
+</body>
+
+</html>

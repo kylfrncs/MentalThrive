@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <title>MentalThrive | Student</title>
+
+    <!--<link rel="stylesheet" href="{{url_for('static',filename='myDesign.css')}}">-->
+    <!-- Favicons -->
+    <link href="{{url_for('static', filename='avologo.png')}}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!--Depression-->
+    {% if Dep_say == 'Normal' %}
+    <style>
+        .container #Depres {
+            color: green !important;
+        }
+    </style>
+    {% elif Dep_say == 'Mild' %}
+    <style>
+        .container #Depres {
+            color: yellowgreen !important;
+        }
+    </style>
+    {% elif Dep_say == 'Moderate' %}
+    <style>
+        .container #Depres {
+            color: goldenrod;
+        }
+    </style>
+    {% elif Dep_say == 'Severe' %}
+    <style>
+        .container #Depres {
+            color: rgb(236, 83, 0) !important;
+        }
+    </style>
+    {% elif Dep_say == 'Extremely Severe' %}
+    <style>
+        .container #Depres {
+            color: red !important;
+        }
+    </style>
+    {% endif %}
+
+    <!--Anxiety-->
+    {% if Anx_say == 'Normal' %}
+    <style>
+        .container #Anxi {
+            color: green !important;
+        }
+    </style>
+    {% elif Anx_say == 'Mild' %}
+    <style>
+        .container #Anxi {
+            color: yellowgreen !important;
+        }
+    </style>
+    {% elif Anx_say == 'Moderate' %}
+    <style>
+        .container #Anxi {
+            color: goldenrod !important;
+        }
+    </style>
+    {% elif Anx_say == 'Severe' %}
+    <style>
+        .container #Anxi {
+            color: rgb(236, 83, 0) !important;
+        }
+    </style>
+    {% elif Anx_say == 'Extremely Severe' %}
+    <style>
+        .container #Anxi {
+            color: red;
+        }
+    </style>
+    {% endif %}
+
+    <!--Stress-->
+    {% if Stres_say == 'Normal' %}
+    <style>
+        .container #Stress {
+            color: green !important;
+        }
+    </style>
+    {% elif Stres_say == 'Mild' %}
+    <style>
+        .container #Stress {
+            color: yellowgreen !important;
+        }
+    </style>
+    {% elif Stres_say == 'Moderate' %}
+    <style>
+        .container #Stress {
+            color: goldenrod !important;
+        }
+    </style>
+    {% elif Stres_say == 'Severe' %}
+    <style>
+        .container #Stress {
+            color: rgb(236, 83, 0) !important;
+        }
+    </style>
+    {% elif Stres_say == 'Extremely Severe' %}
+    <style>
+        .container #Stress {
+            color: red;
+        }
+    </style>
+    {% endif %}
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+
+</head>
+
+<body>
+    <div id="loader"></div>
+
+
+    <section class="h-100 h-custom" style="background-image: linear-gradient(rgb(144, 179, 89),rgb(144, 179, 89));">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center" style="opacity: 0.9;">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-sm-8 col-6">
+                        <div class="card rounded-3 shadow-lg p-3 mb-5 bg-body rounded"
+                            style="background-image: linear-gradient(rgb(230, 242, 239),rgb(230, 242, 239));">
+                            <img src="{{url_for('static', filename='UILOGO2.png')}}" class="w-100"
+                                style="align-self: center; max-width: 50%; max-height: 50%;">
+                            <div class="card-body p-4 pb-5">
+                                <p class="fs-4 pb-sm-0 mb-sm-5 px-sm-2 text-center text-muted fw-bold text-break">
+                                    Assessment Result
+                                </p>
+
+
+
+                                <div class="container px-xxl-5 my-5">
+
+                                    <div class="card rounded " style="background-color: aliceblue;">
+
+                                        <h2 class="ms-3"><strong>Depression : </strong><a id="Depres">{{Dep_say}}</a>
+                                        </h2>
+                                        <p class="fs-5 mx-3 fw-normal">{{Dep_tip}}</p>
+                                    </div>
+
+                                    <div class="card rounded " style="background-color: aliceblue;">
+                                        <h2 class="ms-3"><strong>Anxiety : </strong><a id="Anxi">{{Anx_say}}</a></h2>
+                                        <p class="fs-5 mx-3 fw-normal">{{Anx_tip}}</p>
+                                    </div>
+
+                                    <div class="card rounded " style="background-color: aliceblue;">
+                                        <h2 class="ms-3"><strong>Stress : </strong><a id="Stress">{{Stres_say}}</a></h2>
+                                        <p class="fs-5 mx-3 fw-normal">{{Stres_tip}}</p>
+                                    </div>
+
+                                </div>
+                                <div class="card rounded-3 bg-transparent shadow-lg">
+                                    <h3 class="text-center">Tips</h3>
+                                    <i class="fs-5 ms-3 mb-3 fw-normal">{{resulttitle}}<br>
+                                        {{result}}</i>
+
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 pt-3 text-center">
+                                <button type="button" class="btn btn-secondary btn-lg mb-1"><a
+                                        href="{{url_for('goto_student_landingpage')}}"
+                                        style="text-decoration: none; color: white;">Back to home</a></button>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--<iframe style="  background-image: linear-gradient(rgb(144, 179, 89),rgb(144, 179, 89));" width="0" height="0" src="https://www.youtube.com/embed/gQlMMD8auMs?si=XaSmCasgdZ5thUIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    <iframe width="0" height="0" src="https://www.youtube.com/embed/gQlMMD8auMs?si=XaSmCasgdZ5thUIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+
+    <script>
+        var loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
+    </script>
+
+
+
+
+    <script>
+        window.onbeforeunload = function () {
+            if (window.scrollTo) window.scrollTo(0, 0);
+        };
+        if (history && history.scrollRestoration) history.scrollRestoration = "manual";
+
+    </script>
+
+</body>
+
+</html>
