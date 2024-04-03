@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MentalThrive</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{url_for('static', filename='avologo.png')}}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/aos/aos.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css')}}">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+  <!-- =======================================================
+  * Template Name: Day
+  * Updated: Aug 17 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <div id="loader"></div>
+
+  <div class="banner">
+    <!-- ======= Header ======= -->
+    <header id="header" class="head">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a href="{{url_for('goto_student_landingpage')}}" class="logo" style="max-width: 40%; max-height: 40%;"><img
+            src="{{ url_for('static', filename='avologo.png') }}" alt="" class="img-fluid;">MentalThrive</a>
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto active" href="#home">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#team">Team</a></li>
+            <li><a class="nav-link scrollto" href="#admin">Admin</a></li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            <li><a class="nav-link scrollto" href="{{url_for('goto_student_dash')}}">Dashboard</a></li>
+            <li><a class="bi bi-box-arrow-right fs-4" href="{{url_for('goto_student_logout')}}" data-bs-toggle="tooltip"
+                data-bs-placement="right" title="Log out"></a></li>
+          </ul>
+
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div>
+
+    </header><!-- End Header -->
+    <style>
+      #alert-container {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        /* Center the alert horizontally */
+        transform: translateX(-50%);
+        /* Centering adjustment */
+        z-index: 10000;
+        /* Make sure it's on top of other elements */
+        pointer-events: none;
+        /* To allow click-through */
+        width: auto;
+        /* Adjust width based on content */
+        max-width: 90%;
+        /* Limit the maximum width */
+      }
+
+      .alert {
+        position: relative;
+        margin: 20px;
+        pointer-events: auto;
+        /* Allow interaction */
+        width: 100%;
+        /* Full width by default */
+      }
+    </style>
+
+    <!-- ======= home Section ======= -->
+    <section class="container-fluid" id="home" class="d-flex align-items-center position-relative">
+      <div class="row">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div id="alert-container">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        </div>
+        {% endif %}
+        {% endwith %}
+        <div class="col position-relative fs-2 fw-bold" data-aos="fade-up" data-aos-delay="500" style="width: 50%; height: 100px; float: left; margin-top: 50px;
+        margin-left: 50px; margin-bottom: 300px; color: black; margin-top: 100px;">
+          <p class="fs-1">Good Day {{student_name[0] }}!</p>
+
+          <p class="h2 tracking-wide mb-3">{{resulttitle}}</p>
+
+          <p class="h3 mb-3">{{result}}</p>
+
+          <a href="{{url_for('goto_student_form')}}" class="btn-get-started scrollto">Get Started</a>
+        </div>
+        <div class="col align-items-center" data-aos="fade-up" data-aos-delay="500" style="width: 50%; height: 100px; float: left; margin-top: 50px;
+      margin-left: 50px; margin-bottom: 300px; color: black; font-size: 35px; font-weight: bold;">
+          <image id="UILOGO" src="{{ url_for('static', filename='assets/img/UILOGO.png')}}"
+            style="width: 500px; height: 500px; ">
+        </div>
+      </div>
+    </section>
+
+
+    <!-- End home -->
+
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+            <img src="{{ url_for('static', filename='assets/img/gif.gif') }}" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <h1>MentalThrive</h1>
+
+            <p style="font-size: 20px;">
+              Mental health is just as important as physical health. This resource encourages
+              students to take care of their mental health to create happier, healthier and
+              more productive teams. Let's break down the stigma of mental health in the
+              workplace so every student can get the mental health support at school that they need.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End About Section -->
+
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+        <div class="section-title">
+          <h1>Council of Leaders</h1>
+          <p>Bring you safe space</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/L.jpg') }}" alt="">
+              <h4>Frances Roxanne Sorolla</h4>
+              <span>University Guidance Associate</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/M.jpg' )}}" alt="">
+              <h4>Ma. Lourdes Bedia, RGC</h4>
+              <span>University Guidance Counselor</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/R.jpg') }}" alt="">
+              <h4>Lourlyn Supresencia Montero</h4>
+              <span>University Guidance Associate</span>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/L2.jpg') }}" alt="">
+              <h4>Donie Alvon M. Mañosa. RGC</h4>
+              <span>University Guidance Counselor</span>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/R2.jpg') }}" alt="">
+              <h4>Donita Sol G. Escorido. RGC</h4>
+              <span>University Guidance Counselor</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Team Section -->
+
+    <!--Admin Section-->
+    <section id="admin" class="team">
+      <div class="container">
+        <div class="section-title">
+          <h1>Admins</h1>
+          <p>Bring you safe space</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/Grace.jpg') }}" alt="">
+              <h4>Mary Grace Tabarnero, PROGRAMMING</h4>
+              <span>Bachelor Science of Information Technology</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/Jem.jpeg' )}}" alt="">
+              <h4>Jemima Mariano, PROGRAMMING</h4>
+              <span>Bachelor Science of Information Technology</span>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="{{ url_for('static', filename='assets/img/team/Kyle.jpg') }}" alt="">
+              <h4>Kyle Francis Pama, PROGRAMMING</h4>
+              <span>Bachelor Science of Information Technology</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!--End Admin Section-->
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2 style="font-weight: bold;">Contact</h2>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>School Address</h3>
+              <p>Rizal Street, Iloilo City, Iloilo City, Iloilo, 5000</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>info.ui@phinmaed.com</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>tel: (033) 338-1071 loc. 106</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6462.774720075809!2d122.56839237036134!3d10.692319617488717!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33aee5255345f11b%3A0xb32057bb6b1d39c8!2sPHINMA%20UNIVERSITY%20OF%20ILOILO!5e1!3m2!1sen!2sph!4v1711832971276!5m2!1sen!2sph"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+      </div>
+
+    </section><!-- End Contact Section -->
+
+    <main id="main">
+
+    </main>
+    <!-- End #main -->
+
+  </div>
+
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var alertContainer = document.getElementById('alert-container');
+
+      if (alertContainer) {
+        setTimeout(function () {
+          alertContainer.remove();
+        }, 5000);  // Remove the alert after 5 seconds
+      }
+    });
+  </script>
+
+  <script>
+    var loader = document.getElementById("loader");
+    window.addEventListener("load", function () {
+      loader.style.display = "none";
+    })
+  </script>
+
+
+  <script>
+    window.onbeforeunload = function () {
+      if (window.scrollTo) window.scrollTo(0, 0);
+    };
+    if (history && history.scrollRestoration) history.scrollRestoration = "manual";
+
+  </script>
+
+</body>
+
+</html>

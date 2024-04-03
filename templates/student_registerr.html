@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <title>MentalThrive | Student</title>
+
+  <!--<link rel="stylesheet" href="{{url_for('static',filename='myDesign.css')}}">-->
+  <!-- Favicons -->
+  <link href="{{url_for('static', filename='avologo.png')}}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+
+</head>
+
+<body>
+  <div id="loader"></div>
+
+  <section class="h-100 h-custom" style="background-image: linear-gradient(rgb(144, 179, 89), rgb(144, 179, 89));">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3 shadow-lg p-3 mb-5 bg-body rounded"
+            style="background-image: linear-gradient(rgb(226, 236, 139),rgb(226, 236, 139));">
+            <img src="{{url_for('static', filename='UILOGO2.png')}}" class="w-100"
+              style="align-self: center; max-width: 75%; max-height: 75%;">
+            <div class="card-body p-4 p-md-5">
+              <p class="fs-4 pb-2 pb-sm-0 mb-sm-5 px-sm-2 text-center text-muted fw-bold text-break">
+                Student<br>
+                Create Account
+              </p>
+
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+
+              <div class="alert alert-danger">
+                <ul>
+                  {% for message in messages %}
+                  <li> {{ message }} </li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              {% endif %}
+              {% endwith %}
+
+              <form class="px-md-2" action="{{ url_for('goto_student_register') }}" method="POST">
+
+                {{ form.hidden_tag() }}
+
+                <div class="d-flex flex-row align-items-center mb-3">
+                  <div class="form-floating flex-fill mb-0">
+
+                    {# Flask-WTF Form Field #}
+                    {{ form.Sfirst_name.label(for="Sfirst_name", class="form-label") }}
+                    {{ form.Sfirst_name(id="Sfirst_name", class="form-control", required="required", placeholder="", autocomplete="off") }}
+
+                    {# Display errors if any #}
+                    {% if form.Sfirst_name.errors %}
+                    <ul class="text-danger">
+                      {% for error in form.Sfirst_name.errors %}
+                      <li>{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    <label for="floatingInput">Enter your first name</label>
+                  </div>
+
+                  <div class="form-floating flex-fill mb-0">
+                    {# Flask-WTF Form Field #}
+                    {{ form.Slast_name.label(for="Slast_name", class="form-label") }}
+                    {{ form.Slast_name(id="Slast_name", class="form-control", required="required", placeholder="", autocomplete="off") }}
+
+                    {# Display errors if any #}
+                    {% if form.Slast_name.errors %}
+                    <ul class="text-danger">
+                      {% for error in form.Slast_name.errors %}
+                      <li>{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <label for="floatingInput">Enter your last name</label>
+                  </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="form-floating flex-fill mb-0">
+                    {# Flask-WTF Form Field #}
+                    {{ form.Sid_number.label(for="Sid_number", class="form-label") }}
+                    {{ form.Sid_number(id="Sid_number", class="form-control", maxlength="15", required="required",
+                    autocomplete="off", placeholder="", onkeyup="addHyphens(event)", onkeypress="return
+                    onlyNumberKey(event)") }}
+
+                    {# Display errors if any #}
+                    {% if form.Sid_number.errors %}
+                    <ul class="text-danger">
+                      {% for error in form.Sid_number.errors %}
+                      <li>{{ error }}</li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {# Additional label for consistency with the plain HTML #}
+                    <label class="floatingInput" for="idnum">ID-Number</label>
+                  </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  {{ form.Scourse.label(for="Scourse", class="form-label") }}
+                  {{ form.Scourse(id="Scourse", class="form-control") }}
+
+                  {% if form.Scourse.errors %}
+                  <ul>
+                    {% for error in form.Scourse.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="form-floating flex-fill mb-0">
+
+                    {{ form.Semail.label(for="Semail")}}
+                    {{ form.Semail(id="Semail", class="form-control", autocomplete="off", placeholder="")}}
+
+                    {% if form.Semail.errors %}
+                    <ul>
+                      {% for error in form.Semail.errors %}
+                      <li> {{ error }} </li>
+                      {% endfor %}
+                    </ul>
+
+                    {% endif %}
+
+                    <label class="floatingInput" for="idnum">Enter your email</label>
+                  </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="form-floating flex-fill mb-0">
+
+                    {{ form.Spassword.label(for="Spassword")}}
+                    {{ form.Spassword(id="Spassword", class="form-control", required="required",
+                    autocomplete="off", placeholder="", oninput="togglePasswordVisibility(this)")}}
+
+                    {% if form.Spassword.errors %}
+                    <ul>
+                      {% for error in form.Spassword.errors %}
+                      <li> {{ error }} </li>
+                      {% endfor %}
+                    </ul>
+
+                    {% endif %}
+
+                    <label class="floatingInput">Enter your password</label>
+                  </div>
+
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <div>
+                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()()"><a
+                      class="text-muted text-decoration-none">Show Password</a>
+                  </div>
+
+                </div>
+
+                <div class="col-sm-12 pt-4 text-center">
+
+                  {{ form.Signup(class="btn btn-secondary btn-lg mb-1") }}
+
+                </div>
+
+                <div class="col-sm-12 pt-4 text-center">
+                  <a>Have already an account?</a>
+                    <a href="{{ url_for('goto_student_login') }}" class="text-muted" style="color: black;">Login now</a>
+                </div>
+
+                <script>
+                  function sendTimeToServer() {
+                    var time = new Date();
+                    var i = document.createElement("img");
+                    i.src = "/getTime?time=" + time;
+                    document.getElementById("time").innerHTML = time;
+                  }
+                </script>
+
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script>
+    var loader = document.getElementById("loader");
+    window.addEventListener("load", function () {
+      loader.style.display = "none";
+    })
+  </script>
+
+  <script>
+    function myFunction1() {
+      var x = document.getElementById("myInput1");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
+
+
+  <script>
+    window.onbeforeunload = function () {
+      if (window.scrollTo) window.scrollTo(0, 0);
+    };
+    if (history && history.scrollRestoration) history.scrollRestoration = "manual";
+
+  </script>
+
+  <script>
+    var idn = document.querySelector('#Sid_number');
+
+    idn.addEventListener('keyup', function (event) {
+      if (event.key !== 'Backspace' && (idn.value.length === 2 || idn.value.length === 7)) {
+        idn.value += '-';
+      }
+    });
+
+    function onlyNumberKey(evt) {
+      // Only ASCII character in that range allowed
+      var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+      if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+  <script>
+    function togglePasswordVisibility() {
+      var passwordInput = document.getElementById("Spassword");
+      var checkbox = document.getElementById("showPassword");
+
+      passwordInput.type = checkbox.checked ? "text" : "password";
+    }
+  </script>
+
+</body>
+
+</html>

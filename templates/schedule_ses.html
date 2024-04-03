@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Session</title>
+  <!-- Include Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Schedule Counseling Session</h1>
+    <p>Schedule session for this Student: {{ sid }}</p>
+    <form action="/schedule_ses" method="POST">
+      <!-- Hidden input field for student_id -->
+      <div class="form-group">
+        <label for="sessionDate">Date:</label>
+        <input type="Date" class="form-control" name="Date" required>
+      </div>
+      <div class="form-group">
+        <label for="sessionTime">Time:</label>
+        <input type="Time" class="form-control" name="Time" required>
+      </div>
+      <!-- Add a hidden input field for student_id if needed -->
+      <input type="hidden" name="id_student" value="{{ sid }}
+      
+      <button type="submit" class="btn btn-primary">Set Schedule</button>
+    </form>
+    
+  </div>
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

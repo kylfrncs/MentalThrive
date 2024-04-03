@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Statistics - MT Councelor</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="{{ url_for('static', filename='avologo.png') }}" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+</head>
+
+
+<body class="sb-nav-fixed">
+    <div id="loader"></div>
+
+    <nav class="sb-topnav navbar navbar-expand" style="background-image: linear-gradient(rgb(50 75 33),rgb(50 75 33));">
+        <!-- Navbar Brand-->
+        <h5 class="navbar-brand fw-bold text-center" style="color: rgb(226, 236, 139);">Counselor</h5>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars" style="color: rgb(226, 236, 139);"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Home"><a
+                    href="{{url_for('goto_counselor_landingpage')}}"><i class='fas fa-sign-out-alt'
+                        style="color: rgb(226, 236, 139);"></i></a></li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion" id="sidenavAccordion" style="background-color: rgb(50 75 33);">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <a class="logo"><img src="{{ url_for('static', filename='avologo.png') }}" alt=""
+                                class="img-fluid" style="max-width: 75%; max-height: 75%; margin-left: 25px;"></a>
+
+                        <div class="sb-sidenav-menu-heading"></div>
+                        <a class="nav-link" href="{{url_for('goto_counselor_dash')}}"
+                            style="color: rgb(226, 236, 139);">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+
+                        <a class="nav-link" href="{{url_for('goto_counselor_charts')}}"
+                            style="color: rgb(50 75 33); background-color: rgb(226, 236, 139);">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Statistics
+                        </a>
+                        <a class="nav-link" href="{{url_for('goto_session_history')}}"
+                            style="color: rgb(226, 236, 139);">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
+                            Session
+                        </a>
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer" style="color: rgb(226, 236, 139);">
+                    <div class="small">Logged in as:</div>
+                    Counselor
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main style="background-image: linear-gradient(rgb(226, 236, 139),rgb(226, 236, 139));">
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Statistics</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active" style="color: rgb(241, 122, 138);">
+                            <h3>MentalThrive</h3>
+                        </li>
+                        <select id="courseDropdown" class="form-select" onchange="filterByCourse()">
+                            <option value="" selected>All Courses</option>
+                            {% for course in courses %}
+                            <option value="{{ course }}" {% if selected_course==course %}selected{% endif %}>{{ course
+                                }}</option>
+                            {% endfor %}
+                        </select>
+                    </ol>
+
+                    <div class="row">
+                        <!-- Depression Chart -->
+                        <div class="col-lg-10 mb-4">
+                            <div class="card">
+                                <div class="card-header" style="color: white;background-color: rgb(241, 122, 138);">
+                                    <i class="fas fa-chart-pie me-1"></i>
+                                    Depression Summary
+                                </div>
+                                <div class="card-body" style="height: 450px;">
+                                    <div id="depressionChart" style="width: 100%; height: 100%;"></div>
+                                </div>
+                                <div class="card-footer small text-muted">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Anxiety Chart -->
+                        <div class="col-lg-10 mb-4">
+                            <div class="card">
+                                <div class="card-header" style="color: white;background-color: rgb(241, 122, 138);">
+                                    <i class="fas fa-chart-pie me-1"></i>
+                                    Anxiety Summary
+                                </div>
+                                <div class="card-body" style="height: 450px;">
+                                    <div id="anxietyChart" style="width: 100%; height: 100%;"></div>
+                                </div>
+                                <div class="card-footer small text-muted">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stress Chart -->
+                        <div class="col-lg-10 mb-4">
+                            <div class="card">
+                                <div class="card-header" style="color: white;background-color: rgb(241, 122, 138);">
+                                    <i class="fas fa-chart-pie me-1"></i>
+                                    Stress Summary
+                                </div>
+                                <div class="card-body" style="height: 450px;">
+                                    <div id="stressChart" style="width: 100%; height: 100%;"></div>
+                                </div>
+                                <div class="card-footer small text-muted">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; MentalThrive 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+    <script>
+        var loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
+    </script>
+
+    <!--Course Filter-->
+    <script>
+        function filterByCourse() {
+            var selectedCourse = document.getElementById("courseDropdown").value;
+            window.location.href = "/counselor_charts?course=" + selectedCourse;
+        }
+    </script>
+
+
+
+    <!--PIE CHART-->
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            var categorizedData = JSON.parse('{{ data | tojson | safe }}');
+
+            var depressionData = categorizedData.Depression.map(item => item.count);
+            var anxietyData = categorizedData.Anxiety.map(item => item.count);
+            var stressData = categorizedData.Stress.map(item => item.count);
+
+            drawPieChart('depressionChart', ['Normal', 'Mild', 'Moderate', 'Severe'], depressionData);
+            drawPieChart('anxietyChart', ['Normal', 'Mild', 'Moderate', 'Severe'], anxietyData);
+            drawPieChart('stressChart', ['Normal', 'Mild', 'Moderate', 'Severe'], stressData);
+        }
+
+        function drawPieChart(elementId, labels, data) {
+            var chartData = google.visualization.arrayToDataTable([
+                ['Task', 'Count'],
+                ['Normal', data[0]],
+                ['Mild', data[1]],
+                ['Moderate', data[2]],
+                ['Severe', data[3]]
+            ]);
+
+            var severityColors = {
+                'Normal': 'rgb(0, 128, 0)',     
+                'Mild': 'rgb(154, 205, 50)',      
+                'Moderate': 'rgb(218, 165, 32)',   
+                'Severe': 'rgb(236, 83, 0)'      
+            };
+
+            var chartColors = [
+                severityColors['Normal'],
+                severityColors['Mild'],
+                severityColors['Moderate'],
+                severityColors['Severe']
+            ];
+
+            var options = {
+                title: '',
+                pieHole: 0.3,
+                colors: chartColors,
+                legend: { position: 'right' },
+                pieSliceTextStyle: { color: 'black' },
+                tooltip: { format: 'number' } 
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById(elementId));
+            chart.draw(chartData, options);
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+</body>
+
+</html>

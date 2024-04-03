@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <style>
+        .custom-btn-primary {
+            background-color: gray;
+            color: black;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-btn-primary:hover {
+            background-color: #fd6aa0;
+        }
+
+        .card {
+            max-width: 800px;
+            max-height: 800px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .underline-text {
+            text-decoration: underline;
+        }
+    </style>
+    <title>Counselor login</title>
+</head>
+
+<body>
+    <div id="loader"></div>
+
+    <section class="h-100 h-custom"
+        style="background-image: linear-gradient(rgb(144, 179, 89), rgb(144, 179, 89));">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="card rounded-3 shadow-lg p-3 mb-5 bg-body rounded"
+                        style="background-image: linear-gradient(rgb(226, 236, 139),rgb(226, 236, 139));">
+                        <img src=" {{ url_for('static', filename = 'UILOGIN_COUNSEL.png') }} " class="w-100"
+                            style="align-self: center; max-width: 100%; max-height: 150%;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-4 px-md-2 text-center">Create Student Account</h3>
+
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            <div class="alert alert-danger">
+                                <ul>
+                                    {% for message in messages %}
+                                    <li> {{ message }} </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                            {% endwith %} 
+
+                            <form method="POST" action="{{ url_for('goto_student_register') }}">
+                                {{ form.hidden_tag() }}
+
+                            <form class="px-md-2">
+                                <div class="mb-3">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-floating flex-fill mb-2">
+                                        
+                                        {{ form.Semail.label(for="Semail")}}
+                                        {{ form.Semail(id="Semail", class="form-control")}}
+
+                                        {% if form.Semail.errors %}
+                                        <ul>
+                                            {% for error in form.Semail.errors %}
+                                            <li> {{ error }} </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                    <div class="form-floating flex-fill mb-2">
+                               
+                                        {{ form.Spassword.label(for="Spassword")}}
+                                        {{ form.Spassword(id="Spassword", class="form-control")}}
+
+                                        {% if form.Spassword.errors %}
+                                        <ul>
+                                            {% for error in form.Spassword.errors %}
+                                            <li> {{ error }} </li>
+                                            {% endfor %}
+                                        </ul>
+
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 form-check d-flex justify-content-between">
+                                    <div>
+                                        <input class="form-check-input" type="checkbox" id="showPassword">
+                                        <label class="form-check-label" for="showPassword">Show Password</label>
+                                    </div>
+                                </div>
+
+                                {{ form.Signup(class="btn custom-btn-primary btn-lg w-100 mt-2 fw-bold") }}
+
+                                <div class="d-flex justify-content-between mt-3">
+                                     <div>
+                                        <p class="mb-0">Have already an account? <a href="#" class="underline-text">Login now</a></p>
+                                            </div>
+                                                <div class="ms-auto pe-3">
+                                                    <a href="{{ url_for('all_buttons_backhome') }}" class="underline-text">Home</a>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Show/hide password functionality
+        document.getElementById('showPassword').addEventListener('change', function () {
+            var passwordField = document.getElementsByName('counsel_password')[0];
+            passwordField.type = this.checked ? 'text' : 'password';
+        });
+    </script>
+</body>
+
+</html>

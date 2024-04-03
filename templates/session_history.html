@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - MT Counselor</title>
+    <link href="{{ url_for('static', filename='avologo.png') }}" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+
+</head>
+
+<style>
+    #datatablesSimple thead{
+    padding: 10px;
+    background-color: rgb(241, 122, 138);
+    color: white;
+    
+}
+
+.btn1{
+    font-size: 12px;
+    border-color: rgb(241, 122, 138);
+    border-radius: 5px;
+    color: white;
+}
+</style>
+
+
+<body class="sb-nav-fixed">
+
+    <div id="loader"></div>
+
+    <nav class="sb-topnav navbar navbar-expand" style="background-image: linear-gradient(rgb(50 75 33),rgb(50 75 33));">
+        <!-- Navbar Brand-->
+        <h5 class="navbar-brand fw-bold text-center" style="color: rgb(226, 236, 139);">Counselor</h5>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars" style="color: rgb(226, 236, 139);"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Home"><a
+                    href="{{url_for('goto_counselor_landingpage')}}"><i class='fas fa-sign-out-alt'
+                        style="color: rgb(226, 236, 139);"></i></a></li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion" id="sidenavAccordion" style="background-color: rgb(50 75 33);">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <a class="logo"><img src="{{ url_for('static', filename='avologo.png') }}" alt=""
+                                class="img-fluid" style="max-width: 75%; max-height: 75%; margin-left: 25px;"></a>
+
+                        <div class="sb-sidenav-menu-heading"></div>
+                        <a class="nav-link" href="{{url_for('goto_counselor_dash')}}" style="color: rgb(226, 236, 139);">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+
+                        <a class="nav-link" href="{{url_for('goto_counselor_charts')}}"
+                        style="color: rgb(226, 236, 139);">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Statistics
+                        </a>
+
+                        <a class="nav-link" href="{{url_for('goto_session_history')}}"
+                        style="color: rgb(50 75 33); background-color: rgb(226, 236, 139);">
+                        <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
+                            Session
+                        </a>
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer" style="color: rgb(226, 236, 139);">
+                    <div class="small">Logged in as:</div>
+                    Counselor
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main style="background-image: linear-gradient(rgb(226, 236, 139),rgb(226, 236, 139));">
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Sessions</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active" style="color: rgb(241, 122, 138);"><h3>MentalThrive</h3></li>
+                    </ol>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Session of Students
+                        </div>
+                        <div class="container mt-5">
+                            <table id="datatablesSimple" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th><center>ID</th>
+                                        <th><center>Email</th>
+                                        <th><center>Name</th>
+                                        <th><center>Date</th>
+                                        <th><center>Time</th>
+                                        <th><center>Remarks</th>
+                                        <th><center></th>
+                                        <th><center></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ses in data| reverse %}
+                                    <tr>
+
+                                        <td><center>{{ ses[0] }}</td>
+                                        <td>{{ ses[1] }}</td>
+                                        <td>{{ ses[2] }}</td>
+                                        <td>{{ ses[3] }}</td>
+                                        <td><center>{{ ses[4] }}</td>
+                                        <td>{{ ses[5] }}</td>
+                                        <td><center>
+                                            <button type="button" class="btn1" name="ses_id" onclick="openScheduleSessionModal('{{ ses[0] }}')" style="background-color: rgb(241, 122, 138)">NOTE</button>                           
+                                        </td>  
+                                        <td><center>
+                                            <button type="button" class="btn1" onclick="openStudentSessionsModal('{{ ses[1] }}', '{{ ses[2] }}')" style="background-color: rgb(241, 122, 138)">View Sessions</button>
+                                        </td>    
+
+                                    </tr>
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; MentalThrive 2024</div>
+
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!--Session Remark Modal -->
+    <div class="modal fade" id="scheduleSessionModal" tabindex="-1" aria-labelledby="scheduleSessionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="color: rgb(226, 236, 139); background-image: linear-gradient(rgb(50 75 33),rgb(50 75 33));">
+                    <h5 class="modal-title" id="scheduleSessionModalLabel">Counseling Session</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: rgb(226, 236, 139);">
+                    <form action="/remarks" method="POST">
+                        <!-- Hidden input field for student_id -->
+                        <input type="hidden" name="session_idhehe" id="studentId">
+
+                        <textarea name="remark" class="form-control mb-3" name="remark" style="width: 100%; height: 100px;"></textarea>
+                        <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn" style="background-color: rgb(241, 122, 138); border-radius: 5px;
+                        color: white; justify-items: end; margin-right: 50px;">Submit</button>
+                        </div>
+                
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for displaying student sessions -->
+<div class="modal fade" id="studentSessionsModal" tabindex="-1" aria-labelledby="studentSessionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="color: rgb(226, 236, 139); background-image: linear-gradient(rgb(50 75 33),rgb(50 75 33));">
+                <h4 class="modal-title" id="studentSessionsModalLabel">Sessions of <span id="studentName"></span></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" >
+                <table id="datatablesSimple" class="table table-bordered">
+                    <thead>
+
+                    </thead>
+                    <tbody id="studentSessionsBody">
+                        <!-- Sessions will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='assets/demo/chart-area-demo.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/demo/chart-bar-demo.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/datatables-simple-demo.js')}}"></script>
+
+    <script>
+        var loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        });
+    </script>
+    
+    <script>
+        function openScheduleSessionModal(studentId) {
+            document.getElementById('studentId').value = studentId;       
+            var myModal = new bootstrap.Modal(document.getElementById('scheduleSessionModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        }   
+        
+    </script>
+
+    <script>
+        function openStudentSessionsModal(studentEmail, studentName) {
+            // Set student name in modal title
+            document.getElementById('studentName').innerText = studentName;
+    
+            // Fetch student sessions from server
+            fetch(`/view_student_sessions/${studentEmail}`)
+            .then(response => response.text())
+            .then(data => {
+                // Set modal body content with fetched sessions
+                document.getElementById('studentSessionsBody').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching student sessions:', error);
+            });
+    
+            // Show modal
+            var myModal = new bootstrap.Modal(document.getElementById('studentSessionsModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        }
+    </script>
+    
+    
+</body>
+
+</html>
+

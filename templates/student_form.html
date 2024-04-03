@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <title>MentalThrive | Student</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+    <!-- Favicons -->
+    <link href="{{url_for('static', filename='avologo.png')}}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+    <style>
+        .custom-slider {
+            width: 200px;
+        }
+
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            /* Adjust the width of the image */
+            height: 25px;
+            /* Adjust the height of the image */
+            background: url('..//static/brain.png') center center no-repeat;
+            /* Replace 'thumb-image.png' with the path to your image */
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        .custom-slider::-moz-range-thumb {
+            width: 25px;
+            /* Adjust the width of the image */
+            height: 25px;
+            /* Adjust the height of the image */
+            background: url('../static/brain.png') center center no-repeat;
+            /* Replace 'thumb-image.png' with the path to your image */
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        .custom-slider::-webkit-slider-runnable-track {
+            height: 18px;
+            /* Adjust the height of the slider bar */
+        }
+
+        .custom-slider::-moz-range-track {
+            height: 18px;
+            /* Adjust the height of the slider bar */
+        }
+
+        .custom-slider::-webkit-slider-runnable-track {
+            background-color: aliceblue;
+            /* Change to the desired color */
+        }
+
+        .custom-slider::-moz-range-track {
+            background-color: aliceblue;
+            /* Change to the desired color */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="loader"></div>
+
+
+    <div class="bg-image">
+        <section class="h-100 h-custom" style="background-image: linear-gradient(rgb(144, 179, 89),rgb(144, 179, 89));">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-lg-8 col-xxl-6">
+                        <div class="card rounded-3 shadow-lg p-3 mb-5 bg-body rounded border border-2"
+                            style="background-image: linear-gradient(rgb(226, 236, 139),rgb(226, 236, 139));">
+                            <div class="text-center">
+                                <img src="{{url_for('static', filename='avo.png')}}" class="w-50 rounded" alt="">
+                            </div>
+                            <form id="myForm" action="{{ url_for('goto_success_student') }}" method="POST"
+                                required="true">
+
+                                <div class="card-body p-4 p-md-3">
+
+                                    <!-- Card -->
+                                    <div class="">
+                                        <h3 class="pb-2 text-center fw-bold">Self-Assessment</h3>
+                                        <h4 class="text-center">(DASS-21)</h4>
+                                        <h5 class="text-center">Depression, Anxiety, Stress Scale</h5>
+                                        <h5 class="pb-2 text-center">21-Items</h5>
+                                        <div class="col-lg-10 d-grid mx-sm-auto shadow border border-success rounded">
+                                            <h6 class="p-2 text-start">Please read each statement and circle a number 0,
+                                                1, 2 or 3 which indicates how much the statement
+                                                applied to you over the past week. There are no right or wrong answers.
+                                                Do not spend too much time
+                                                on any statement.</h6>
+                                            <h6 class="p-2 text-start">The rating scale is as follows:<br>
+                                                <strong>0</strong> Did not apply to me at all<br>
+                                                <strong>1</strong> Applied to me to some degree, or some of the time<br>
+                                                <strong>2</strong> Applied to me to a considerable degree, or a good
+                                                part of time<br>
+                                                <strong>3</strong> Applied to me very much, or most of the time
+                                            </h6>
+                                        </div>
+
+                                        <!--Question 1 || Stress-->
+                                        <div class="py-3"></div>
+
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Madali akong magalit">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>1.)</b><strong>
+                                                        I am angered easily.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer1" id="inlineRange1" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription1')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription1')" />
+                                                <div id="sliderDescription1" class="mt-2">Rate
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 2 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Madalas akong mag-alala tungkol sa ilang bagay">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>2.)</b><strong> I tend to worry about certain things.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer2" id="inlineRange2" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription2')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription2')" />
+                                                <div id="sliderDescription2" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 3 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Pakiramdam ko'y walang laman.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>3.)</b><strong>
+                                                        I feel empty.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer3" id="inlineRange3" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription3')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription3')" />
+                                                <div id="sliderDescription3" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 4 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Ako ay sobrang mapagpansin sa aking sarili.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>4.)</b><strong>
+                                                        I am extremely self-conscious.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer4" id="inlineRange4" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription4')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription4')" />
+                                                <div id="sliderDescription4" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 5 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Pakiramdam ko'y walang saysay at layunin ang aking buhay.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>5.)</b><strong>
+                                                        I feel my life has no meaning and purpose.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer5" id="inlineRange5" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription5')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription5')" />
+                                                <div id="sliderDescription5" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 6 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Ako ay naging demanding sa iba nitong mga huling araw.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>6.)</b><strong> I am being demanding toward others lately</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer6" id="inlineRange6" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription6')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription6')" />
+                                                <div id="sliderDescription6" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 7 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nahihirapan akong matulog sa gabi.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>7.)</b><strong> I find it difficult to sleep at night.</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer7" id="inlineRange7" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription7')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription7')" />
+                                                <div id="sliderDescription7" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 8 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Pakiramdam ko ay nagmamadali ako sa mga bagay-bagay (hal., kumakain ng hindi talaga nasasarapan, mabilis magsalita).">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>8.)</b><strong> I feel like I do things urgently or in hurry (e.g.
+                                                        eating without really tasting my food, talking fast)</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer8" id="inlineRange8" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription8')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription8')" />
+                                                <div id="sliderDescription8" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 9 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madali akong ma-inis">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>9.)</b><strong> I easily get annoyed.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer9" id="inlineRange9" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription9')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription9')" />
+                                                <div id="sliderDescription9" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 10 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Hindi maganda ang pakiramdam ko sa aking sarili.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>10.)</b><strong> I don't feel good about myself.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer10" id="inlineRange10" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription10')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription10')" />
+                                                <div id="sliderDescription10" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 11 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madaling ako ma-disappoint sa iba kapag hindi nila naaabot ang aking mga inaasahan.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>11.)</b><strong> I get disappointed easily by others when they
+                                                        don't meet my expectations.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer11" id="inlineRange11" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription11')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription11')" />
+                                                <div id="sliderDescription11" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 12 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Pakiramdam ko ay hindi ako produktibo at hindi masyadong nakakamit ng maraming bagay.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>12.)</b><strong> I feel unproductive and not achieving very
+                                                        much.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer12" id="inlineRange12" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription12')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription12')" />
+                                                <div id="sliderDescription12" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 13 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nawawalan ako ng interes o nawalan na ako ng interes sa mga bagay na dati kong natutuwaan.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>13.)</b><strong>I am losing or have lose interest on things I used
+                                                        to enjoy.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer13" id="inlineRange13" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription13')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription13')" />
+                                                <div id="sliderDescription13" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 14 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Mahirap para sa akin mag-relax.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>14.)</b><strong> I find it difficult to relax. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer14" id="inlineRange14" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription14')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription14')" />
+                                                <div id="sliderDescription14" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 15 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Mahirap para sa akin mag-concentrate.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>15.)</b><strong> I find it difficult to concentrate.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer15" id="inlineRange15" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription15')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription15')" />
+                                                <div id="sliderDescription15" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 16 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madali akong ma-irita kahit sa mga maliliit na sitwasyon.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>16.)</b><strong> I easily annoyed even with mild situations.
+                                                    </strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer16" id="inlineRange16" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription16')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription16')" />
+                                                <div id="sliderDescription16" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 17 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Pakiramdam ko ay mahina ako at madaling mapagod.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>17.)</b><strong> I feel weak and get tired easily.</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer17" id="inlineRange17" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription17')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription17')" />
+                                                <div id="sliderDescription17" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 18 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nakakaramdam ako ng pagkakamali kapag sinusubukan kong maglaan ng oras para sa aking sarili, dahil dapat ay ginagawa ko ang aking mga akademikong gawain.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>18.)</b><strong> I feel guilty when I try to give myself a
+                                                        "me-time", because I should be doing my academic
+                                                        activities.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer18" id="inlineRange18" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription18')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription18')" />
+                                                <div id="sliderDescription18" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 19 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madali akong magulat kapag naistorbo.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>19.)</b><strong> I am easily startled when disturbed.</strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer19" id="inlineRange19" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription19')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription19')" />
+                                                <div id="sliderDescription19" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 20 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Ako ay may kamalayan na tumataas ang tibok ng aking puso.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>20.)</b><strong> I am aware that my heart rate goes up or feels
+                                                        irregular.</strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer20" id="inlineRange20" value="0"
+                                                    oninput="updateSliderValue(this.value, 'sliderDescription20')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription20')" />
+                                                <div id="sliderDescription20" class="mt-2">Rate
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <!--Question 21 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Hindi ako makapokus sa paggawa ng mga bagay.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>21.)</b><strong> I can't focus in doing things. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer21" id="inlineRange21" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription21')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription21')" />
+                                                <div id="sliderDescription21" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 22 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madalas akong pawisan.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>22.)</b><strong> I tend to sweat easily. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer22" id="inlineRange22" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription22')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription22')" />
+                                                <div id="sliderDescription22" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 23 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madali akong ma-irita.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>23.)</b><strong> I easily get irritated. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer23" id="inlineRange23" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription23')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription23')" />
+                                                <div id="sliderDescription23" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 24 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Mahina ang aking ganang kumain.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>24.)</b><strong> I have poor appetite. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer24" id="inlineRange24" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription24')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription24')" />
+                                                <div id="sliderDescription24" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 25 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Pakiramdam ko'y walang pag-asa at walang saysay ang lahat.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>25.)</b><strong> I feel helpless and hopeless. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer25" id="inlineRange25" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription25')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription25')" />
+                                                <div id="sliderDescription25" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 26 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Ang aking mga kamay ay nanginginig nang hindi kontrolado.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>26.)</b><strong> My hands are shaking uncontrollably. </strong>
+                                                </p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer26" id="inlineRange26" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription26')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription26')" />
+                                                <div id="sliderDescription26" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 27 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Nararanasan ko ang sakit ng ulo, indigestion, o mga kakaibang sakit at kirot.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>27.)</b><strong> I experience headaches, indigestion, or
+                                                        unexplained aches and pains. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer27" id="inlineRange27" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription27')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription27')" />
+                                                <div id="sliderDescription27" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 28 || Stress-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Ako ay madalas mag-overreact.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>28.)</b><strong> . I tend to overreact. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer28" id="inlineRange28" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription28')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription28')" />
+                                                <div id="sliderDescription28" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 29 || Depression-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Pakiramdam ko'y may sala at pagkakamali, at ako'y madalas mag-self-criticize ng malupit.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>29.)</b><strong> I feel guilty and harshly criticize myself of
+                                                        perceived faults and mistakes. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer29" id="inlineRange29" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription29')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription29')" />
+                                                <div id="sliderDescription29" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+
+                                        <!--Question 30 || Anxiety-->
+                                        <div class="col-lg-10 d-grid gap-3 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Madalas akong mag-panic kapag pakiramdam kong may mangyayaring masama.">
+
+                                            <div class="float-start mt-2 mx-2">
+                                                <p><b>30.)</b><strong> I tend to panic when I feel something terrible is
+                                                        going to happen. </strong></p>
+                                            </div>
+
+                                            <div class="text-center mb-3">
+
+                                                <input type="range" class="form-range custom-slider" min="0" max="3"
+                                                    step="1" name="Answer30" id="inlineRange30" value="0"
+                                                    onchange="updateSliderValue(this.value, 'sliderDescription30')"
+                                                    onclick="updateSliderValue(this.value, 'sliderDescription30')" />
+                                                <div id="sliderDescription30" class="mt-2">Rate
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="py-3"></div>
+
+                                        <div class="form-floating col-lg-10 d-grid gap-3 mx-0 mx-sm-auto shadow border border-success rounded"
+                                            data-bs-placement="right" title="Kumusta ka {{Sfirst_name}}?">
+                                            <textarea class="form-control" placeholder="" id="floatingTextarea2"
+                                                style="height: 100px; background-color: rgb(226, 236, 139);"
+                                                name="fcomment"></textarea>
+                                            <label for="floatingTextarea2"><strong>How are you
+                                                    {{student_name[0]}}?</strong></label>
+
+                                        </div>
+
+                                        <div class="py-3"></div>
+                                    </div>
+
+                                    <div class="py-3"></div>
+
+
+                                    <div class="col-sm-12 pt-4 text-center">
+                                        <button type="button" onclick="goBack()"
+                                            class="btn btn-secondary btn-lg mb-1">Back</button>
+
+                                        <input type="hidden" name="key" id="key" required>
+                                        <button class="btn btn-secondary btn-lg mb-1" type="button"
+                                            onclick="validateForm()">Submit</button>
+                                    </div>
+
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+
+    <!--<iframe style="  background-image: linear-gradient(rgb(144, 179, 89),rgb(144, 179, 89));
+    " width="0" height="0" src="https://www.youtube.com/embed/gQlMMD8auMs?si=XaSmCasgdZ5thUIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    <iframe width="0" height="0" src="https://www.youtube.com/embed/gQlMMD8auMs?si=XaSmCasgdZ5thUIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    -->
+    <script>
+        var loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
+    </script>
+
+
+    <script>
+        window.onbeforeunload = function () {
+            if (window.scrollTo) window.scrollTo(0, 0);
+        };
+        if (history && history.scrollRestoration) history.scrollRestoration = "manual";
+
+    </script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var slidersInteracted = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]; // Array to track whether each slider has been interacted with
+
+        function validateForm() {
+            if (!slidersInteracted.every(interacted => interacted)) {
+                alert("Please move all sliders before submitting.");
+                // Scroll to the first unmoved slider
+                var unmovedSliderIndex = slidersInteracted.findIndex(interacted => !interacted);
+                var unmovedSliderElementId = "inlineRange" + (unmovedSliderIndex + 1);
+                var unmovedSliderElement = document.getElementById(unmovedSliderElementId);
+                if (unmovedSliderElement) {
+                    unmovedSliderElement.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            } else {
+                // Submit the form
+                document.getElementById("myForm").submit();
+            }
+        }
+
+        function updateSliderValue(value, descriptionId) {
+            // Update the description
+            var description = '';
+            switch (parseInt(value)) {
+                case 0:
+                    description = 'Never';
+                    break;
+                case 1:
+                    description = 'Sometimes';
+                    break;
+                case 2:
+                    description = 'Usually';
+                    break;
+                case 3:
+                    description = 'Everytime';
+                    break;
+                default:
+                    description = '';
+            }
+            document.getElementById(descriptionId).innerHTML = description;
+
+            // Set the corresponding index in slidersInteracted array to true
+            var sliderIndex = parseInt(descriptionId.replace("sliderDescription", "")) - 1;
+            slidersInteracted[sliderIndex] = true;
+        }
+    </script>
+
+<script>
+    function goBack() {
+        window.location.href = '/student_landingpage';
+    }
+</script>
+
+
+</body>
+
+</html>

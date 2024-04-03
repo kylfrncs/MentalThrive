@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - MT Counselor</title>
+    <link href="{{ url_for('static', filename='avologo.png') }}" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+</head>
+
+<style>
+
+    #datatablesSimple thead {
+        color: white;
+        background-color: rgb(241, 122, 138);
+    }
+    
+    td{
+        font-size: 12px;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .btn1{
+        font-size: 12px;
+        border-color: rgb(241, 122, 138);
+        border-radius: 5px;
+        color: white;
+    }
+    </style>
+
+
+<body class="sb-nav-fixed">
+
+    <div id="loader"></div>
+    <nav class="sb-topnav navbar navbar-expand" style="background-image: linear-gradient(rgb(50 75 33),rgb(50 75 33));">
+        <!-- Navbar Brand-->
+        <h5 class="navbar-brand fw-bold text-center" style="color: rgb(226, 236, 139);">Counselor</h5>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars" style="color: rgb(226, 236, 139);"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="right" title="Home"><a
+                    href="{{url_for('goto_counselor_landingpage')}}"><i class='fas fa-sign-out-alt'
+                        style="color: rgb(226, 236, 139);"></i></a></li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion" id="sidenavAccordion" style="background-color: rgb(50 75 33);">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <a class="logo"><img src="{{ url_for('static', filename='avologo.png') }}" alt=""
+                                class="img-fluid" style="max-width: 75%; max-height: 75%; margin-left: 25px;"></a>
+
+                        <div class="sb-sidenav-menu-heading"></div>
+                        <a class="nav-link" href="{{url_for('goto_counselor_dash')}}" style="color: rgb(50 75 33); background-color: rgb(226, 236, 139);">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+
+                        <a class="nav-link" href="{{url_for('goto_counselor_charts')}}"
+                        style="color: rgb(226, 236, 139);">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Statistics
+                        </a>
+
+                        <a class="nav-link" href="{{url_for('goto_session_history')}}"
+                        style="color: rgb(226, 236, 139);">
+                        <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
+                            Session
+                        </a>
+
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer" style="color: rgb(226, 236, 139);">
+                    <div class="small">Logged in as:</div>
+                    Counselor
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main style="background-image: linear-gradient(rgb(226, 236, 139),rgb(226, 236, 139));">
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Dashboard</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active" style="color: rgb(241, 122, 138);"><h3>MentalThrive</h3></li>
+                    </ol>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Student Records
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
+                                        <th><center>ID</th>
+                                        <th><center>First&nbsp;Name</th>
+                                        <th><center>Last&nbsp;Name</th>
+                                        <th><center>Email</th>
+                                        <th><center>Course</th>
+                                        <th><center>Comment</th>
+                                        <th><center>Date</th>
+                                        <th><center>Time&nbsp;</th>
+                                        <th><center>Depression&nbsp;Result</th>
+                                        <th><center>Anxiety&nbsp;Result</th>
+                                        <th><center>Stress&nbsp;Result</th>
+                                        <th><center>Depression&nbsp;Score</th>
+                                        <th><center>Anxiety&nbsp;Score</th>
+                                        <th><center>Stress&nbsp;Score</th> 
+                                        <th><center>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in data %}
+                                    <tr>
+                                        <td>{{ student[15] }}</td>
+                                        <td>{{ student[1] }}</td>
+                                        <td>{{ student[2] }}</td>
+                                        <td>{{ student[0] }}</td>
+                                        <td>{{ student[3] }}</td>
+                                        <td>{{ student[4] }}</td>
+                                        <td>{{ student[6] }}/{{student[5]}}/{{student[7]}}</td>
+                                        <td>{{ student[8] }}</td>
+                                        <td>{{ student[9] }}</td>
+                                        <td>{{ student[10] }}</td>
+                                        <td>{{ student[11] }}</td>
+                                        <td>{{ student[12] }}</td>
+                                        <td>{{ student[13] }}</td>
+                                        <td>{{ student[14] }}</td>
+                                        <td class="text-center">
+                                            <button id="setScheduleBtn_{{ student[15] }}" type="button" class="btn1" onclick="openScheduleSessionModal('{{ student[0] }}', '{{ student[15] }}')" style="background-color: rgb(241, 122, 138)">Set Schedule</button>
+                                        </td>
+                                            
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; MentalThrive 2024</div>
+
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Schedule Session Modal -->
+    <div class="modal fade" id="scheduleSessionModal" tabindex="-1" aria-labelledby="scheduleSessionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="color: rgb(226, 236, 139); background-image: linear-gradient(rgb(50 75 33),rgb(50 75 33));">
+                    <h5 class="modal-title" id="scheduleSessionModalLabel">Schedule Counseling Session</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: rgb(226, 236, 139);">
+
+                    <form action="/schedule_ses" method="POST" onsubmit="handleFormSubmission()">
+                        <!-- Hidden input field for student_id -->
+                        <input type="hidden" name="student_email" id="studentEmail">
+                        <input type="hidden" name="student_id" id="studentId">
+
+                        <div class="input-group mb-3">
+                            <i class="mt-1" for="sessionDate">Date:&nbsp;&nbsp;</i>
+                            <input type="Date" class="form-control" name="Date" required>
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <i class="mt-1" for="sessionTime">Time:&nbsp;&nbsp;</i>
+                            <input type="Time" class="form-control" name="Time" required>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn1 btn-sm" style="background-color: rgb(241, 122, 138); justify-items: end;">Set Schedule</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='assets/demo/chart-area-demo.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/demo/chart-bar-demo.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/datatables-simple-demo.js')}}"></script>
+    
+
+    <script>
+        var loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        });
+
+        // Function to handle form submission
+        function handleFormSubmission() {
+            // Get the student id from the hidden input field
+            var studentId = document.getElementById('studentId').value;
+
+            // Disable the button and change its text to "Scheduled"
+            var scheduleBtn = document.getElementById('setScheduleBtn_' + studentId);
+            scheduleBtn.disabled = true;
+            scheduleBtn.innerText = 'Scheduled';
+
+            // Store the state in localStorage
+            localStorage.setItem('scheduled_' + studentId, 'true');
+        }
+
+        // Function to open the modal
+        function openScheduleSessionModal(studentEmail, studentId) {
+            document.getElementById('studentEmail').value = studentEmail;
+            document.getElementById('studentId').value = studentId;
+            var myModal = new bootstrap.Modal(document.getElementById('scheduleSessionModal'), {
+                keyboard: false
+            });
+            myModal.show();
+        }
+
+        // Check if the button was previously scheduled and disable it
+        document.addEventListener("DOMContentLoaded", function() {
+            var scheduledButtons = document.querySelectorAll('[id^="setScheduleBtn_"]');
+            scheduledButtons.forEach(function(button) {
+                var studentId = button.id.split('_')[1];
+                if (localStorage.getItem('scheduled_' + studentId) === 'true') {
+                    button.disabled = true;
+                    button.innerText = 'Scheduled';
+                }
+            });
+        });
+    
+        
+    </script>
+    
+          
+        
+</body>
+
+</html>
+
